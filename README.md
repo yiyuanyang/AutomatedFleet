@@ -1,100 +1,47 @@
 # AutomatedFleet
 
-A distributed multi-agent code generation framework. Unlike traditional single-agent approaches, AutomatedFleet orchestrates a swarm of specialized agents collaborating on complex software projects.
+Distributed multi-agent code generation framework. A swarm of specialized agents collaborating on complex software projects.
 
-## Vision
+## Architecture Decisions
 
-Transform software development from individual agent tasks to **coordinated fleet operations**:
-- **Distribute complexity** across multiple coding agents working in parallel
-- **Specialize by function** — different agents for different architectural layers
-- **Real-time collaboration** via modern code review workflows (not markdown files)
-- **Protocol-driven consistency** enforced by automation, not manual oversight
+| Aspect | Decision |
+|---|---|
+| **Agent Runtime** | OpenClaw as assistant overseeing subagents and crons |
+| **Repo Structure** | Monorepo |
+| **Human-in-the-loop** | Escalate only when blocked; agents work on other sub-items while waiting for steer |
+| **First Target** | Infrastructure setup itself |
+| **Cost Control** | Configurable model tiers (Kimi for routine, Opus for critical) |
 
-## Core Principles
+## Core Roles
 
-### 1. Fleet, Not Individual
-- Multiple coding agents (Claude Code instances) working simultaneously
-- Task distribution and workload balancing
-- Conflict resolution and merge coordination
-
-### 2. Specialization by Role
-| Role | Responsibility |
-|------|---------------|
+| Role | Function |
+|---|---|
 | **Tech Lead** | Defines interfaces, protocols, architectural decisions |
-| **Code Reviewer** (Codex-like) | Reviews diffs, enforces standards, approves changes |
-| **Coding Agents** (Fleet) | Implement features, fix bugs, write tests |
-| **Protocol Officer** | Monitors adherence, escalates violations, maintains tooling |
+| **Code Reviewer** | Reviews diffs, enforces standards (GitHub-style) |
+| **Fleet Agents** | Multiple coding agents on distributed tasks |
+| **Orchestrator** | OpenClaw assistant managing the fleet |
 
-### 3. Modern Code Review Workflow
-- **No markdown files** for comments/feedback
-- GitHub-style **diff comments** on actual code changes
-- **Approval gates** with required reviewers
-- **CI/CD integration** for automated checks
+## Coordination Model
 
-### 4. Script-Driven Consistency
-- Process enforced by **executable scripts**, not documentation
-- **Protocol as code** — validation, linting, enforcement automated
-- **Self-healing** — detects drift, auto-corrects or escalates
+1. **Git-based**: Agents work in branches, propose PRs
+2. **Module Ownership**: Strict file boundaries prevent conflicts
+3. **Interface Contracts**: Tech Lead defines `src/contracts/`, agents code against them
+4. **Merge Queue**: Sequential PR merges with auto-rebase
 
-## Architecture
+## Pending Items / User Steer
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│                     AUTOMATEDFLEET                          │
-├─────────────────────────────────────────────────────────────┤
-│  Task Router        │  Distributes work to available agents  │
-├─────────────────────────────────────────────────────────────┤
-│  Agent Fleet        │  Multiple Claude Code instances        │
-│  (Coding Agents)    │  Working on different tasks/modules    │
-├─────────────────────────────────────────────────────────────┤
-│  Tech Lead Agent    │  Interface definitions, protocol docs  │
-├─────────────────────────────────────────────────────────────┤
-│  Review Interface   │  GitHub PRs / Custom diff review tool  │
-├─────────────────────────────────────────────────────────────┤
-│  Protocol Officer   │  Validation scripts, drift detection   │
-└─────────────────────────────────────────────────────────────┘
-```
+Agents can flag items needing human input while continuing work on other sub-tasks. No blocking on single decisions.
 
-## Workflow
+## Cost Strategy
 
-1. **Feature Request** → Task Router analyzes and decomposes
-2. **Interface Definition** → Tech Lead defines contracts/APIs
-3. **Parallel Implementation** → Fleet agents code different modules
-4. **Continuous Review** → Code Reviewer examines diffs, comments inline
-5. **Integration** → Protocol Officer validates adherence, runs checks
-6. **Deployment** → Automated pipeline ships the code
+- **Routine work**: Kimi K2.5 (near-zero cost)
+- **Critical design**: Opus (high reasoning)
+- **Standard coding**: Sonnet 4.6 (balanced)
 
-## Key Differences from TheResearcher
+## Status
 
-| Aspect | TheResearcher | AutomatedFleet |
-|--------|--------------|----------------|
-| Agents | Sequential (Claude → Codex) | Parallel (Fleet of Claudes) |
-| Review | Markdown file exchange | Real diff comments (GitHub-like) |
-| Protocol | Document-based enforcement | Script-based, executable |
-| Scale | Single-threaded | Distributed, concurrent |
-| Feedback | Round-based cycles | Continuous, event-driven |
-
-## Brainstorming & Development
-
-This project itself will be developed via:
-1. **Feature brainstorming sessions** — Ideation with Opus/Kimi
-2. **Protocol definition** — Tech Lead role establishes contracts
-3. **Fleet implementation** — Distributed agent coding
-4. **Continuous debugging** — Protocol Officer monitors and fixes
-5. **Evolution** — Self-improving framework
-
-## Getting Started
-
-TBD — This is the seed. The first task is defining the core protocol and tooling.
-
-## Questions to Resolve
-
-- How do agents coordinate without conflicts? (Merge strategies, locking)
-- What's the minimum viable review interface? (GitHub API vs custom)
-- How to distribute tasks optimally? (Dependency graphs, agent availability)
-- What's the protocol for interface changes? (Versioning, migration)
-- How to debug distributed agent failures? (Observability, tracing)
+Infrastructure setup in progress. See `README.md` for architecture brainstorm.
 
 ---
 
-*Status: Seed README — Direction set, implementation TBD*
+*Last updated: 2026-02-19*
