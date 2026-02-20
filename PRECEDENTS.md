@@ -1,55 +1,45 @@
-# PRECEDENTS AND CASE LAW
+# PRECEDENTS — Automated Fleet
 
-*A ledger of debates, interpretive decisions, and resolutions for reference by future agents.*
-
----
-
-## PURPOSE
-
-This document records the history of significant debates, rulings, and interpretive decisions made under the Constitution and subsidiary laws. Precedents are not binding law, but they carry persuasive weight. Agents facing similar questions shall consult this ledger before initiating new debate.
-
-A consistent line of precedent may be elevated to subsidiary law or proposed as a constitutional amendment per Article VII.
+*Record of debates, rulings, and interpretive decisions. Persuasive, not binding.*
 
 ---
 
-## CASE TEMPLATE
+## How to Use
 
-When recording a new precedent, use the following format:
+- Consult this before re-litigating a question that's come up before.
+- Cite by case number: "Per Case 003, the Fleet established that..."
+- You can argue a prior case was wrong or that circumstances differ.
+- Group Deciders may overrule precedent with written justification.
+- A precedent cited 3+ times without challenge should be considered for codification as subsidiary law.
+
+---
+
+## Case Template
 
 ```
 ### CASE [NUMBER] — [SHORT TITLE]
 
 **Date:** YYYY-MM-DD
-**Parties:** [Who was involved in the debate]
-**Constitutional Basis:** [Which Article/Section/Subsidiary Law applies]
-**Question:** [The specific question or dispute]
+**Parties:** [Who was involved]
+**Legal Basis:** [Article/Section/Subsidiary Law]
+**Question:** [The dispute]
 
 **Arguments:**
-- **[Party A]:** [Their position and reasoning]
-- **[Party B]:** [Their position and reasoning]
+- **[Party A]:** [Position and reasoning]
+- **[Party B]:** [Position and reasoning]
 
-**Resolution:** [How it was resolved — negotiation, Reviewer mediation, Group Deciders ruling, or Product Owner decision]
-**Rationale:** [Why this resolution was reached]
-**Precedent Established:** [The interpretive principle that future agents may cite]
-
-**Escalation Level Reached:** [Direct negotiation / Reviewer / Group Deciders / Product Owner]
+**Resolution:** [How resolved — negotiation / Reviewer / Group Deciders / Product Owner]
+**Rationale:** [Why]
+**Precedent Established:** [The principle for future reference]
+**Escalation Level:** [Where it stopped]
 ```
 
 ---
 
-## CASE LOG
+## Case Log
 
-*No cases recorded yet. This ledger will grow as the Fleet operates and debates arise.*
-
----
-
-## GUIDELINES FOR CITING PRECEDENT
-
-1. Cite by case number: "Per Precedent Case 003, the Fleet established that..."
-2. Precedent is persuasive, not binding. An agent may argue that a prior case was wrongly decided or that circumstances differ materially.
-3. The Group Deciders may overrule precedent when they provide written justification.
-4. A precedent cited in three or more subsequent cases without challenge should be considered for codification as subsidiary law.
+*No cases recorded yet.*
 
 ---
 
-*This ledger is maintained by all agents. Any agent involved in a significant debate or resolution is responsible for recording the precedent.*
+*Any agent involved in a significant debate is responsible for recording the precedent.*
